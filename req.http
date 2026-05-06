@@ -1,0 +1,199 @@
+### REGISTER
+POST http://localhost:5000/auth-api/register
+Content-Type: application/json
+
+{
+"firstname": "Thrai",
+"lastname": "Ambica",
+"email": "test@gmail.com",
+"password": "123456",
+"role": "user"
+}
+
+
+### LOGIN
+POST http://localhost:5000/auth-api/login
+Content-Type: application/json
+
+{
+"email": "test@gmail.com",
+"password": "new123"
+}
+
+
+### CHECK AUTH
+GET http://localhost:5000/auth-api/check
+Cookie:token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjlhYmY4Yjg2OWFhNjhlZTZiNzM1ZCIsImVtYWlsIjoidGVzdHNyaUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImZpcnN0bmFtZSI6InNvd215YSIsImxhc3RuYW1lIjoic3JpIiwiaWF0IjoxNzc3OTcwMjI2LCJleHAiOjE3NzgwNTY2MjZ9.xTRjlwImel5GDWAqwzU49PuUrKdkG-25AJgzKNwO9qM; Path=/; HttpOnly; SameSite=Lax
+
+
+### LOGOUT
+GET http://localhost:5000/auth-api/logout
+
+
+### CHANGE PASSWORD
+PUT http://localhost:5000/auth-api/password
+Content-Type: application/json
+
+{
+"currentpassword": "123456",
+"newpassword": "new123"
+}
+
+### TOGGLE PRIVATE / PUBLIC ACC
+PUT http://localhost:5000/user-api/privacy
+Cookie:token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjk4MzdmMWE0NDk2NTYyMmYxODA4MCIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImZpcnN0bmFtZSI6Ik5ld05hbWUiLCJsYXN0bmFtZSI6Ik5ld0xhc3QiLCJpYXQiOjE3NzgwNTY0MjYsImV4cCI6MTc3ODE0MjgyNn0.jTHHbbqU5vZJQ-3CGJBZ4GL4YKnMSf_r45t8ikZfCD0; Path=/; HttpOnly; SameSite=Lax
+
+### follow user
+PUT http://localhost:5000/user-api/follow
+Content-Type: application/json
+
+{
+  "targetuserid": "69f9837f1a44965622f18080"
+}
+
+
+### get follow request 
+GET http://localhost:5000/user-api/follow-requests
+
+###accept follow request
+PUT http://localhost:5000/user-api/accept-follow
+Content-Type: application/json
+
+{
+  "requesterid": "69f9837f1a44965622f18080"
+}
+
+###reject follow req
+PUT http://localhost:5000/user-api/reject-follow
+Content-Type: application/json
+
+{
+  "requesterid": "USER_ID"
+}
+
+###get other user profile
+GET http://localhost:5000/user-api/user/69f9837f1a44965622f18080
+
+
+### GET MY PROFILE
+GET http://localhost:5000/user-api/user
+
+
+
+### UPDATE PROFILE
+PUT http://localhost:5000/user-api/user
+Content-Type: application/json
+
+{
+"firstname": "NewName",
+"lastname": "NewLast",
+"bio": "hello world"
+}
+
+
+### FOLLOW / UNFOLLOW
+PUT http://localhost:5000/user-api/follow
+Content-Type: application/json
+
+{
+"targetuserid": "69f9837f1a44965622f18080"
+}
+
+### GET ALL USERS
+GET http://localhost:5000/user-api/users
+
+
+
+### SEARCH USER
+GET http://localhost:5000/user-api/search/Thrai
+
+
+
+### GET FOLLOWERS
+GET http://localhost:5000/user-api/followers
+
+
+### GET FOLLOWING
+GET http://localhost:5000/user-api/following
+
+
+### CREATE POST
+POST http://localhost:5000/post-api/post
+Content-Type: application/json
+
+{
+  "content": "Need MERN teammate for hackathon",
+  "posttype": "collaboration"
+}
+
+### GET POSTS
+GET http://localhost:5000/post-api/post
+
+### LIKE POST
+PUT http://localhost:5000/post-api/like
+Content-Type: application/json
+
+{
+"postid": "69f9a9e2b869aa68ee6b735b"
+}
+
+### REPLY POST
+PUT http://localhost:5000/post-api/reply
+Content-Type: application/json
+
+{
+"postid": "69f9a9e2b869aa68ee6b735b",
+"text": "Nice oneeeeeeeeeeeeeeee!"
+}
+
+### DELETE POST
+DELETE http://localhost:5000/post-api/post/"69f9a9e2b869aa68ee6b735b"
+
+
+### GET NOTIFICATIONS
+GET http://localhost:5000/notifications-api
+
+
+### MARK AS READ
+PUT http://localhost:5000/notifications-api/69f9ace5b869aa68ee6b735f
+
+
+### request 
+POST http://localhost:5000/request-api/send
+Content-Type: application/json
+
+{
+  "postid": "69fad052b80cf1d5bf5043e8"
+}
+
+### get req
+GET http://localhost:5000/request-api
+
+
+###
+PUT http://localhost:5000/request-api/69fad0c8b80cf1d5bf5043e9
+Content-Type: application/json
+
+
+### Chat with GeminiBot
+POST http://localhost:5000/chatbot-api/chat
+Content-Type: application/json
+
+{
+  "message": "what is a+b a=2 b=5"
+}
+
+
+### testing            
+POST http://localhost:5000/message-api
+Content-Type: application/json
+
+{
+  "receiverid": "69f9abf8b869aa68ee6b735d",
+  "text": "Hello team mate!"
+}
+
+
+### to get chat
+GET http://localhost:5000/message-api/69f9abf8b869aa68ee6b735d
+
