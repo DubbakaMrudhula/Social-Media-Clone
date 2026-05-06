@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 .env
 node_modules
 req.http
+=======
+.env
+node_modules
+req.http
+>>>>>>> fd491f342df9cef997cb1cfbffb4c010d46f7ab6
