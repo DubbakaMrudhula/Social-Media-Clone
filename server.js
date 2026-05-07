@@ -12,6 +12,7 @@ import { notificationapp } from "./api/notification_api.js"
 import { requestapp } from "./api/request_api.js"
 import { messageapp } from "./api/message_api.js"
 import chatbotRoutes from "./api/chatbot_api.js";
+import adminroute from "./api/admin_api.js"
 const app = exp()
 config()
 
@@ -40,6 +41,7 @@ app.use("/notifications-api", notificationapp)
 app.use("/request-api", requestapp)
 app.use("/chatbot-api", chatbotRoutes);
 app.use("/message-api", messageapp)
+app.use("/admin-api", adminroute)
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {

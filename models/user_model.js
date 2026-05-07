@@ -53,12 +53,13 @@ followRequests: [{
   },
 role: {
   type: String,
-  enum: ["user"],
+  enum: ["user","admin"],
   default: "user"
 },
-skills: [{
-  type: String
-}],
+skills: {
+  type: [String],
+  default: []
+},
   isuseractive: {
     type: Boolean,
     default: true

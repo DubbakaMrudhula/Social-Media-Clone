@@ -310,25 +310,64 @@ userapp.get("/users", verifytoken("user"), async (req, res) => {
 // ==========================
 userapp.get("/search/:name", verifytoken("user"), async (req, res) => {
 
-  const users = await usermodel.find({
-    firstname: {
-      $regex: req.params.name,
-      $options: "i"
-    }
-  })
+  try {
 
-  const filteredUsers = users.map(user => {
-    let obj = user.toObject()
-    delete obj.password
-    return obj
-  })
+    const searchtext = req.params.name
 
-  res.status(200).json({
-    message: "search results",
-    payload: filteredUsers
-  })
+    const users = await usermodel.find({
+
+      $or: [
+
+        {
+          firstname: {
+            $regex: searchtext,
+            $options: "i"
+          }
+        },
+
+        {
+          lastname: {
+            $regex: searchtext,
+            $options: "i"
+          }
+        },
+
+        {
+          skills: {
+            $in: [
+              new RegExp(searchtext, "i")
+            ]
+          }
+        }
+
+      ]
+
+    })
+
+    const filteredUsers = users.map(user => {
+
+      let obj = user.toObject()
+
+      delete obj.password
+
+      return obj
+    })
+
+    res.status(200).json({
+
+      message: "search results",
+
+      payload: filteredUsers
+
+    })
+
+  } catch (err) {
+
+    res.status(500).json({
+      message: err.message
+    })
+  }
 })
-
 
 // ==========================
 // GET FOLLOWERS

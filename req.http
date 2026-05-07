@@ -3,13 +3,13 @@ POST http://localhost:5000/auth-api/register
 Content-Type: application/json
 
 {
-"firstname": "Thrai",
-"lastname": "Ambica",
-"email": "test@gmail.com",
-"password": "123456",
-"role": "user"
+  "firstname": "Thrai",
+  "lastname": "Ambica",
+  "email": "test@gmail.com",
+  "password": "123456",
+  "role": "user",
+  "skills": ["React", "MERN"]
 }
-
 
 ### LOGIN
 POST http://localhost:5000/auth-api/login
@@ -68,7 +68,7 @@ PUT http://localhost:5000/user-api/reject-follow
 Content-Type: application/json
 
 {
-  "requesterid": "USER_ID"
+  "requesterid": "69f9837f1a44965622f18080"
 }
 
 ###get other user profile
@@ -79,17 +79,16 @@ GET http://localhost:5000/user-api/user/69f9837f1a44965622f18080
 GET http://localhost:5000/user-api/user
 
 
-
 ### UPDATE PROFILE
 PUT http://localhost:5000/user-api/user
 Content-Type: application/json
 
 {
-"firstname": "NewName",
-"lastname": "NewLast",
-"bio": "hello world"
+  "firstname": "Thrai",
+  "lastname": "Ambica",
+  "bio": "MERN developer",
+  "skills": ["React", "MERN", "Node"]
 }
-
 
 ### FOLLOW / UNFOLLOW
 PUT http://localhost:5000/user-api/follow
@@ -147,7 +146,7 @@ Content-Type: application/json
 }
 
 ### DELETE POST
-DELETE http://localhost:5000/post-api/post/"69f9a9e2b869aa68ee6b735b"
+DELETE http://localhost:5000/post-api/post/69f9a9e2b869aa68ee6b735b
 
 
 ### GET NOTIFICATIONS
@@ -174,6 +173,9 @@ GET http://localhost:5000/request-api
 PUT http://localhost:5000/request-api/69fad0c8b80cf1d5bf5043e9
 Content-Type: application/json
 
+{
+  "status": "accepted"
+}
 
 ### Chat with GeminiBot
 POST http://localhost:5000/chatbot-api/chat
@@ -197,3 +199,10 @@ Content-Type: application/json
 ### to get chat
 GET http://localhost:5000/message-api/69f9abf8b869aa68ee6b735d
 
+
+### search bar
+GET http://localhost:5000/user-api/search/React
+
+### follow req
+GET http://localhost:5000/user-api/follow-requests
+Cookie:token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Zjk4MzdmMWE0NDk2NTYyMmYxODA4MCIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImZpcnN0bmFtZSI6IlRocmFpIiwibGFzdG5hbWUiOiJBbWJpY2EiLCJpYXQiOjE3NzgxMzUyMjksImV4cCI6MTc3ODIyMTYyOX0.vwkthAXQllOsCj4DyaD57P4_I8wWejYFK0ZtWrOx3s8; Path=/; HttpOnly; SameSite=Lax
