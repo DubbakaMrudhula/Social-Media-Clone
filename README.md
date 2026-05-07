@@ -22,5 +22,4 @@ This is the backend for a social media application built with Node.js, Express, 
    ```bash
    npm run dev
    ```
-
 Finally our database gets connected and starts working on port 5000 and ready to communicate with our frontend on port 5173
